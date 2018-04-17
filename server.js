@@ -15,8 +15,43 @@ MongoClient.connect("mongodb://localhost:27017", function(err, client){
     return;
   }
 
-  const db = client.db("synthesisers");
-  console.log("Connected to Synthesisers");
+  const db = client.db("synths");
+  console.log("Connected to Synths");
+
+
+  // RESTful ROUTEs
+
+  // create new
+  server.post("/api/synths", function(req, res){
+    // get the collection
+    const collection = db.collection('synths');
+    // get the item to add
+    const item = req.body;
+
+    // save to DB and run callback function
+    collection.save(item, function(err, result){
+      if(err){
+        console.log(err);
+        res.status(500);
+        res.send();
+      }
+
+      console.log('Saved to Synths DB');
+      res.status(201);
+      res.send(item);
+    })
+  });
+
+  // get all
+
+
+  // find
+
+
+  // update
+
+
+  // delete
 
 
 
