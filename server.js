@@ -58,13 +58,32 @@ MongoClient.connect("mongodb://localhost:27017", function(err, client){
     })
   });
 
-  // find
+  // delete
+  server.delete("/api/synths", function(req, res){
+    // get the collectoin
+    const collection = db.collection('synths');
+    // get the object to filter with
+    const filterObject = {};
+
+    // delete Many using the filter object, run callback
+    collection.deleteMany(filterObject, function(err, result){
+      if (err){
+        console.log(err);
+        res.status(500);
+        res.send();
+      }
+
+      console.log("All Synths deleted");
+      res.status(204);
+      res.send();
+    })
+  });
 
 
   // update
 
 
-  // delete
+  // find 1
 
 
 
