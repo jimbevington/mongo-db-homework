@@ -43,7 +43,20 @@ MongoClient.connect("mongodb://localhost:27017", function(err, client){
   });
 
   // get all
+  server.get("/api/synths", function(req, res){
+    // get the collection
+    const collection = db.collection('synths');
+    // find all the items in it, return it and run callback
+    collection.find().toArray(function(err, allItems){
+      if (err){
+        console.log(err);
+        res.status(500);
+        res.send();
+      }
 
+      res.json(allItems);
+    })
+  });
 
   // find
 
