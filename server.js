@@ -15,6 +15,9 @@ MongoClient.connect("mongodb://localhost:27017", function(err, client){
     return;
   }
 
+  const db = client.db("synthesisers");
+  console.log("Connected to Synthesisers");
+
 
 
 
