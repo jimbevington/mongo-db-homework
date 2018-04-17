@@ -79,8 +79,30 @@ MongoClient.connect("mongodb://localhost:27017", function(err, client){
     })
   });
 
-
   // update
+  server.put("/api/synths/:id", function(req, res){
+    // get the collection
+    const collection = db.collection('synths');
+    // get the id
+    const objectID = ObjectID(req.params.id);
+    // make a filter object
+    const filterObject = { _id: objectID };
+    // get the updated object details
+    const updatedItem = req.body;
+
+    collection.update(filterObject, updatedItem, function(err, result){
+      if (err){
+        console.log(err);
+        res.status(500);
+        res.send(result);
+      }
+
+      res.status(204);
+      res.send();
+    });
+
+    // run update on the collecion using the filter object and the updated data
+  })
 
 
   // find 1
