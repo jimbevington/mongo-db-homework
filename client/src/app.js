@@ -1,11 +1,11 @@
-const QuoteView = require('./views/quoteView');
+const SynthView = require('./views/synthView');
 const Request = require('./services/request.js');
 
-const quoteView = new QuoteView();
-const request = new Request('http://localhost:3000/api/quotes');
+const synthView = new SynthView();
+const request = new Request('http://localhost:3000/api/synths');
 
 const appStart = function(){
-
+  request.get(getSynthsRequestComplete);
 }
 
 document.addEventListener('DOMContentLoaded', appStart);

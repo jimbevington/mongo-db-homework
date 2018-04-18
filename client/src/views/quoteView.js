@@ -1,25 +1,25 @@
-var QuoteView = function(){
-  this.quotes = [];
+var SynthView = function(){
+  this.synths = [];
 }
 
-QuoteView.prototype.addQuote = function(quote) {
-  this.quotes.push(quote);
-  this.render(quote);
+SynthView.prototype.addSynth = function(synth) {
+  this.synths.push(synth);
+  this.render(synth);
 }
 
-QuoteView.prototype.clear = function(quote) {
-  this.quotes = [];
-  const ul = document.querySelector('#quotes');
+SynthView.prototype.clear = function(synth) {
+  this.synths = [];
+  const ul = document.querySelector('#synths');
   ul.innerHTML = '';
 }
 
-QuoteView.prototype.render = function(quote){
-    const ul = document.querySelector('#quotes');
+SynthView.prototype.render = function(synth){
+    const ul = document.querySelector('#synths');
     const li = document.createElement('li');
     const text = document.createElement('p');
-    text.innerText = `${quote.name} - "${quote.quote}"`;
+    text.innerText = `${synth.name} - "${synth.manufacturer}"`;
     li.appendChild(text);
     ul.appendChild(li);
 }
 
- module.exports = QuoteView;
+ module.exports = SynthView;
