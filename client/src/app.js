@@ -13,13 +13,17 @@ const createButtonClicked = function(event){
 
   const nameInputValue = document.getElementById('name').value;
   const manuInputValue = document.getElementById('manufacturer').value;
-
+  
   const synthToSave = {
     name: nameInputValue,
     manufacturer: manuInputValue
   };
 
   request.post(createRequestComplete, synthToSave);
+}
+
+const createRequestComplete = function(response){
+  synthView.addSynth(response);
 }
 
 const appStart = function(){
