@@ -10,6 +10,8 @@ const getSynthsRequestComplete = function(allSynths){
 
 const appStart = function(){
   request.get(getSynthsRequestComplete);
+
+  const createSynthButton = document.getElementById('submit-synth');
 }
 
 document.addEventListener('DOMContentLoaded', appStart);
